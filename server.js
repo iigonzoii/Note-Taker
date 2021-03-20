@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // here we require the files in our routes folder so our server knows how we want it to interact with users visiting our site
-require('./routes/apiRoutes')(app);
+// require ('./routes/apiRoutes')(app);
 require('./routes/htmlRoutes')(app);
 
 // without this code below our server wont do anything
