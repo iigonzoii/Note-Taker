@@ -14,9 +14,9 @@ module.exports = (app) => {
     });
 
 
-    app.post('api/notes', (req, res) => {
+    app.post('/api/notes', (req, res) => {
         // bodyInfo represents the note typed by the user
-        const NewBodyInfo = req.body;
+        let NewBodyInfo = req.body;
 
         // this is how we set our id per npm uuid
         NewBodyInfo.id = uuidv4()
@@ -28,10 +28,10 @@ module.exports = (app) => {
         dataStorage.push(NewBodyInfo)
 
         /*  When sending data to a web server, it has to be a string. We use JSON.stringify to accomplish the reverse of JSON.parse*/
-        fs.writeFileSync('./data/db.json', JSON.stringify(data));
+        fs.writeFileSync('./data/db.json', JSON.stringify(dataStorage));
 
-        // res.json(bodyInfo) takes whats in the body and turns it into an object
-        res.json(NewbodyInfo);
+        // res.json(NewBodyInfo) takes whats in the body(the note)and turns it into an object
+        res.json(NewBodyInfo);
     })
 }
         //   here are my get requests

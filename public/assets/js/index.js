@@ -61,6 +61,7 @@ const renderActiveNote = () => {
   } else {
     noteTitle.value = '';
     noteText.value = '';
+    window.location.reload()
   }
 };
 
