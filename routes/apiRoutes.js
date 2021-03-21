@@ -15,7 +15,12 @@ module.exports = (app) => {
     // res.json(bodyInfo) takes whats in the body and turns it into an object
     res.json(bodyInfo);
     })
+    // when recieving data from a web server, the data is always a string, so here we use JSON.parse to read our JS object in our db.json file.
+// let data = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
 
+/* 
+When sending data to a web server, it has to be a string. We use JSON.stringify to accomplish the reverse of JSON.parse so our data can be written to our db.json file
+fs.writeFileSync('./db/db.json', JSON.stringify(data)); */
 }
         //   here are my get requests
        
