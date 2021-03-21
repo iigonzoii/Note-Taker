@@ -2,25 +2,30 @@ const fs = require("fs")
 // per npm docs we will create a UUID (universally unique id). I'm choosing to use their common JS syntax 
 const { v4: uuidv4 } = require('uuid');
 
-//  I will invoke it later using this line below
-uuidv4()
-
-// we want to post new notes using the code below. we will probably need an empty array or to reference our db,json mahybe? .push somewhere on or after line 7?
-
-
-//  notes referes to url pathway
 module.exports = (app) => {
     app.get("/api/notes", (req, res) => {
-        // when recieving data from a web server, the data is always a string, so here we use JSON.parse to read our JS object in our db.json file.
-        
-        let storedNote = JSON.parse(fs.readFileSync("./db/db.son", "utf8"));
 
-        // here we have our response getting kicked back to us in json format
-        res.json(storedNote);
-    })
-    app.post('/notes', (req, res) => {
+        // when recieving data from a web server, the data is always a string, so here we use JSON.parse to read our JS object in our db.json file.
+        let dataStorage = JSON.parse(fs.readFileSync("./db/db.son", "utf8"));
+
+        // here we have our response in json format
+        res.json(dataStorage);
+    });
+
+
+    app.post('api/notes', (req, res) => {
         // bodyInfo represents the note typed by the user
-        const bodyInfo = req.body;
+        const NewBodyInfo = req.body;
+
+        // this is how we set our id per npm uuid
+        NewBodyInfo.id = uuidv4()
+
+        // same as above code block, we are reading a file and parsing it into an object
+        let dataStorage = JSON.parse(fs.readFileSync("./db/db.son", "utf8"));
+
+        // sending the newly added note to our body for the client
+        dataStorage.push(NewBodyInfo)
+
         // res.json(bodyInfo) takes whats in the body and turns it into an object
         res.json(bodyInfo);
     })
