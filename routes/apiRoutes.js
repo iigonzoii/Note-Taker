@@ -1,5 +1,5 @@
 // fs is going to let us read and write to files
-const fs = require("fs")
+const fs = require("fs");
 // per npm docs we will create a UUID (universally unique id). I'm choosing to use their common JS syntax 
 const { v4: uuidv4 } = require('uuid');
 
@@ -33,9 +33,23 @@ module.exports = (app) => {
         // res.json(NewBodyInfo) takes whats in the body(the note)and turns it into an object
         res.json(NewBodyInfo);
     })
-}
-        //   here are my get requests
+    // extra credit writing a delete below
+    app.delete("/api/notes/:id", (req, res) => {
 
-// key element mock up html export or put at bottom after more research.//!check
-// .get can go under post after wrapping whole thing in a function.//!check
-// app.delete as well/ everything can go in here
+        // putting the id as param for deletion of note later
+        let deleteMe = req.params.id;
+
+        // as i did before we are reading a file and parsing it into an object
+        let notes = JSON.parse(fs.readFileSync("./data/db.json", "utf8"));
+
+        // here we use the filter method to find all the notes we want to keep
+        const newNotes = notes.filter(placeHolder => placeHolder.id !== deleteMe)
+
+        // finally we write in our new data 
+        fs.writeFileSync("./data/db.json", JSON.stringify(newNotes))
+
+        //our response contains our filtered array which no longer includes the note we deleted.
+        res.json(newNotes)
+    })
+}
+
