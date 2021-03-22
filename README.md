@@ -17,10 +17,10 @@
   ## Installation
   npm install express
 
-  <img alt="screenshot of landing page" src="./images/nt1">
-  <img alt="screenshot of note entry screen" src="./images/nt2">
-  <img alt="screenshot of example" src="./images/nt3"> 
-  <img alt="screenshot of saved note" src="./images/nt4"> 
+  <img alt="screenshot of landing page" src="./images/nt1.jpg">
+  <img alt="screenshot of note entry screen" src="./images/nt2.jpg">
+  <img alt="screenshot of example" src="./images/nt3.jpg"> 
+  <img alt="screenshot of saved note" src="./images/nt4.jpg"> 
 
   ## Usage
   * see above images for a step by step walk through
