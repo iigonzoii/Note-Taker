@@ -43,7 +43,7 @@
   There are no tests included
 
   ## Deployed Site
-  You can visit the site on <a href="https://www.w3schools.com">heroku</a>
+  You can visit the site on <a href="https://dry-dusk-63317.herokuapp.com/">heroku</a>
 
   ## Questions
   Find me on Github or reach out via email
